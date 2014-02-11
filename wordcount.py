@@ -14,11 +14,13 @@ d = {}
 for word in split_words:
     if d.get(word):
         d[word] += 1
-        print "this word is in dictionary already added 1", word   
+        #print "this word is in dictionary already added 1", word   
     else:   
         d[word] = 1  
-        print "added to dictionary:", word  
-
+        #print "added to dictionary:", word  
+#print our dictionary with word counts
+for key, value in d.iteritems():
+    print key, value
 
 
 
