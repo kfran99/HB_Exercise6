@@ -1,30 +1,36 @@
+#import file
+from sys import argv
+script, filename = argv
 #open and read file and then convert it all to lower case
+f = open (filename, "r")
+myfile = f.read()
 
-twain = open('twain.txt')
-twain_read = twain.read()
-twain_read_lower = twain_read.lower()
-twain_replace = twain_read_lower.replace("--", " ")   
+f.close()
+#the following will split the long string of words at whitespace into a list of words
+split_words = myfile.split()
+#make an empty dictionary
+d = {}
+#iterate through split_words and add each word to dictionary if it's not there
+for word in split_words:
+    if d.get(word):
+        d[word] += 1
+        print "this word is in dictionary already added 1", word   
+    else:   
+        d[word] = 1  
+        print "added to dictionary:", word  
 
-for word in twain_read_lower:
-    if ord(word) > 122 or < 97:
-        word.replace()
 
 
-#count how many times each space-separated word occurs in file
-value = 0
-twain_dictionary = {}
-#split all space-separated words
-   
-for word in twain_replace.split():
-    #stripping the punctuation from the document, but only if it is at the end of a word
-    stripped_word = word.strip("!,.';:-\"?_")
-    #print stripped_word
-    #modifies dictionary and adds the count
-    twain_dictionary[stripped_word] = twain_dictionary.get(stripped_word, 0) + 1
- 
-#loops through each word and value in the dictionary and prints them
-for word, value in twain_dictionary.iteritems():
-    print word, value
+
+#twain_read_lower = twain_read.lower()
+#twain_replace = twain_read_lower.replace("--", " ")   
+
+#for word in twain_read_lower:
+    #if ord(word) > 122 or < 97:
+#        word.replace()
+
+
+
 
 
 
