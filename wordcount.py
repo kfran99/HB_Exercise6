@@ -6,8 +6,26 @@ f = open (filename, "r")
 myfile = f.read()
 
 f.close()
+#make string of words lower case
+myfile = myfile.lower()
+#get rid of punctuation replacing characters outside of lower case letters in ord with space
+#builds a new string called clean
+clean = ""
+"""read through string called myfile character by character 
+and if the character is a letter (between ord of a to z)
+it will be added to the string clean 
+if it's not a letter it will add a space and not add that character
+"""
+for character in myfile:
+ 
+    if ord(character) < ord("a") or ord(character) > ord("z"):       
+        clean = clean + " "
+    else:
+        clean = clean + character
+
 #the following will split the long string of words at whitespace into a list of words
-split_words = myfile.split()
+split_words = clean.split()
+
 #make an empty dictionary
 d = {}
 #iterate through split_words and add each word to dictionary if it's not there
@@ -22,10 +40,6 @@ for word in split_words:
 for key, value in d.iteritems():
     print key, value
 
-
-
-#twain_read_lower = twain_read.lower()
-#twain_replace = twain_read_lower.replace("--", " ")   
 
 #for word in twain_read_lower:
     #if ord(word) > 122 or < 97:
